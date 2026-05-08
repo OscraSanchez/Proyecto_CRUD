@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-// if(!isset ($_SESSION["usuario"])) {
-//     header("Location: ./login.html");
-// }
+if(!isset ($_SESSION["usuario"])) {
+    header("Location: ./login.html");
+}
 
 include "includes/conexion.php";
 $usuario_logeado = $_SESION["usuario"];
