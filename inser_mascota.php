@@ -29,9 +29,26 @@ if($_SERVER["REQUEST METHOD"] == "POST"){
         $sql = "INSERT INTO mascotas (chip, tipo, sexo, raza, peso, tamaño, comportamiento, fecha, veterinario, propietario) VALUES ('$chip', '$tipo', '$sexo', '$raza', '$peso', '$tamaño', '$comportamiento', '$fecha', '$veterinario', '$propietario')";
         $resultado = mysqli_query($conn, $sql);
 
-        if($resultado){
-            echo "";
+        if($resultado){ // si es que si
+            mysqli_stmt_bind_param($resultado, issisiiisss, $chip, $nombre, $sexo, $tipo, $fecha, $raza, $propietario, $veterinario, $peso, $tamaño, $comportamiento);
+        
+
+            if (mysqli_stmt_execute($resultado)){
+                echo "<script>alert('Registro exitoso!'); window.location.href='./tabla_mascotas'</script>";
+            } else {
+                echo "Error al registrar:" . mysqli_error($conn);
+            }
+
+            mysqli_stmt_close($result);
+        } else {
+            echo "Error al preparar la consulta:" . mysqli_error($conn);
         }
+    } else {
+        echo "Faltan datos en el formulario";
     }
+} else {
+   
+    header("Location: ..(./XXX.html");
+    exit;
 }
 ?>
