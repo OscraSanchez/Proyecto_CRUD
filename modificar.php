@@ -7,7 +7,7 @@ include "includes/conexion.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-    $id = $_POST['id_mascotas']
+    $id = $_POST['id_mascotas'];
     $nombre = $_POST['nombre'];
     $chip = $_POST['chip'];
     $tipo = $_POST['tipo'];
@@ -20,21 +20,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $veterinario = $_POST['veterinario'];
     $propietario = $_POST['propietario'];
     
-    if (!empty($password)){
-        // Si el usuario escribió algo en el campopassword, lo hasheamos
-        $pass_hash = password_hash($password, PASSWORD_BCRYPT);
-        $sql = "UPDATE alumnos SET nombre_completo = ?, usuario = ?, password = ? WHERE id = ?";
+    if (!(empty($nombre) || empty($chip) || empty($tipo) || empty($sexo) || empty($raza) || empty($peso) || empty($tamaño) || empty($comportamiento) || empty($fecha) || empty($veterinario) || empty($propietario))){
+        if(is_string($raza)){
+            $sql = "SELECT m.id_raza FROM mascotas m where r.name = $raza";
+            $resultado = mysqli_query($conn, $sql);
+            $razas = mysqli_fetch_all($resultado, MYSQL_ASSOC);
+            foreach ($razas as  $fila){
+                if($fila['raza'] == $raza){
+                    $raza = $fila['id_raza'];
+                }
+            }
+        }
+        if(is_string($veterinario)){
+            $sql = "SELECT v.id_veterinario FROM veterinarios v where v.nombre = $veterinario";
+            $resultado = mysqli_query($conn, $sql);
+            $veterinarios = mysqli_fetch_all($resultado, MYSQL_ASSOC);
+            foreach ($veterinarios as  $fila){
+                if($fila['veterinario'] == $veterinario){
+                    $veterinario = $fila['id_vetrerinario'];
+                }
+            }
+        }
+        if(is_string($propietario)){
+            $sql = "SELECT p.id_propietario FROM propietarios where p.nombre = $propietario";
+            $resultado = mysqli_query($conn, $sql);
+            $propietarios = mysqli_fetch_all($resultado, MYSQL_ASSOC);
+            foreach ($propietarios as  $fila){
+                if($fila['propietario'] == $propietario){
+                    $propietario = $fila['id_propietario'];
+                }
+            }
+
+        $sql = "UPDATE mascotas SET nombre = ?, chip = ?, tipo = ?, sexo = ?, raza = ?, peso = ?, tamaño = ?, comportamiento = ?, fecha = ?, veterinario = ?, propietario = ? WHERE id = ?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "sssi", $nombre_completo, $usuario, $pass_hash, $id);
-    } else {
-        // Si no escribió nada, actualizamos solo el nombre y el usuario
-        $sql = "UPDATE alumnos SET nombre_completo = ?, usuario = ? WHERE id = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "ssi", $nombre_completo, $usuario, $id);
+        mysqli_stmt_bind_param($stmt, "sissiisssis", $nombre, $chip, $tipo, $sexo, $raza, $peso, $tamaño, $comportamiento, $fecha, $veterinario, $propietario, $id);
+        }
     }
 
     if (mysqli_stmt_execute($stmt)){
-        header("Location: ../procesos/bienvenida.php?mensaje=actualizado");
+        header("Location: ./tabla_mascotas.php?mensaje=actualizado");
     } else {
         echo "Error al actualizar: " . mysqli_error($conn);
     }
