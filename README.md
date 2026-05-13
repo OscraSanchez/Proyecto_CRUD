@@ -1,0 +1,1 @@
+En lapresentacion tienes que conocer el codigo.

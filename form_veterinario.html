@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Veterinario</title>
+</head>
+<body>
+    <h1>Añadir Veterinario</h1>
+    <form method="POST" action="./inser_veterinario.php">
+
+        <label>Nombre: <input type="text" name="nombre" required></label><br><br>
+        <label>Apellido: <input type="text" name="apellido" required></label><br><br>
+        <label>Teléfono: <input type="number" name="num_telef" maxlength="9" required></label><br><br>
+        <label>Email: <input type="email" name="email" required></label><br><br>
+        <label>DNI: <input type="text" name="dni" maxlength="9" required></label><br><br>
+        <label>Especialidad: <input type="text" name="especialidad" required></label><br><br>
+        <label>Salario (€): <input type="number" step="0.01" name="sal" required></label><br><br>
+
+        <button type="submit">Guardar veterinario</button>
+        <a href="./tabla_veterinarios.php">Cancelar</a>
+    </form>
+</body>
+</html>

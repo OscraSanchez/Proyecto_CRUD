@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Propietario</title>
+</head>
+<body>
+    <h1>Añadir Propietario</h1>
+    <form method="POST" action="./inser_propietario.php">
+
+        <label>Nombre: <input type="text" name="nombre" required></label><br><br>
+        <label>Apellido: <input type="text" name="apellido" required></label><br><br>
+        <label>Teléfono: <input type="number" name="num_telef" maxlength="9" required></label><br><br>
+        <label>Email: <input type="email" name="email" required></label><br><br>
+        <label>DNI: <input type="text" name="dni" maxlength="9" required></label><br><br>
+
+        <button type="submit">Guardar propietario</button>
+        <a href="./tabla_propietarios.php">Cancelar</a>
+    </form>
+</body>
+</html>

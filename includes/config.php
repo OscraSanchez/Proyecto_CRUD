@@ -1,8 +1,8 @@
 <?php
-$servername = "";
-$username = "";
-$password = "";
-$dbname = "";
 
+$servername = "localhost"; // IP del server de MySQL
+$usuario = "root";
+$password = "";
+$dbname = "veterinario";
 
 ?>
