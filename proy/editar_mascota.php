@@ -44,7 +44,7 @@ if (!$m) {
         <input type="hidden" name="raza_actual" value="<?php echo $m['id_Raza']; ?>">
         <input type="hidden" name="peso_actual" value="<?php echo $m['peso']; ?>">
         <input type="hidden" name="tamaño_actual" value="<?php echo $m['Tamaño']; ?>">
-        <input type="hidden" name="comportamiento_actual" value="<?php echo $m['Comportaminto']; ?>">
+        <input type="hidden" name="comportamiento_actual" value="<?php echo $m['Comportamiento']; ?>">
         <input type="hidden" name="fecha_actual" value="<?php echo $m['Fecha']; ?>">
         <input type="hidden" name="veterinario_actual" value="<?php echo $m['id_veterinario']; ?>">
         <input type="hidden" name="propietario_actual" value="<?php echo $m['id_Propietario']; ?>">
@@ -93,7 +93,7 @@ if (!$m) {
         </label><br><br>
 
         <label>Comportamiento: 
-            <input type="text" name="comportamiento" placeholder="<?php echo $m['Comportaminto']; ?>">
+            <input type="text" name="comportamiento" placeholder="<?php echo $m['Comportamiento']; ?>">
         </label><br><br>
 
         <label>Fecha nacimiento: 
@@ -102,7 +102,7 @@ if (!$m) {
 
         <label>Veterinario: 
             <select name="veterinario">
-                <option value="">-- <?php echo $m['Propietario']; ?> --</option>
+                <option value="">-- <?php echo $m['Veterinario']; ?> --</option>
                 <?php
                     $sql_veterinario = "SELECT id_veterinario, nombre FROM veterinarios";
                     $res_veterinario = mysqli_query($conn, $sql_veterinario);
@@ -115,8 +115,8 @@ if (!$m) {
         </label> <br><br>
 
         <label>ID Propietario: 
-            <select name="veterinario">
-                <option value="">-- <?php echo $m['Veterinario']; ?> --</option>
+            <select name="propietario">
+                <option value="">-- <?php echo $m['Propietario']; ?> --</option>
                 <?php
                     $sql_propietario = "SELECT id_propietario, nombre FROM propietario";
                     $res_propietario = mysqli_query($conn, $sql_propietario);

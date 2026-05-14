@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $propietario = !empty($_POST['propietario']) ? $_POST['propietario'] : $_POST['propietario_actual'];
 
 
-    $sql = "UPDATE Mascotas SET Nombre = ?, Chip = ?, tipo = ?, Sexo = ?, id_Raza = ?, peso = ?, Tamaño = ?, Comportaminto = ?, Fecha = ?, id_veterinario = ?, id_Propietario = ? WHERE id_mascota = ?";
+    $sql = "UPDATE Mascotas SET Nombre = ?, Chip = ?, tipo = ?, Sexo = ?, id_Raza = ?, peso = ?, Tamaño = ?, Comportamiento = ?, Fecha = ?, id_veterinario = ?, id_Propietario = ? WHERE id_mascota = ?";
     $stmt = mysqli_prepare($conn, $sql);
 
     if ($stmt) {

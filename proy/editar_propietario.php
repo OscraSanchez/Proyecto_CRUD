@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$_SESSION["usuario"] = 'Oscar';
 if (!isset($_SESSION["usuario"])) {
     header("Location: ./login.html");
     exit;

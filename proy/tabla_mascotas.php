@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$_SESSION["usuario"] = 'Oscar';
 if (!isset($_SESSION["usuario"])) {
     header("Location: ./login.html");
     exit;
@@ -34,7 +34,7 @@ if ($fil_propietario != '') {
     $condiciones[] = "p.nombre LIKE '%$fil_propietario%'";
 }
 if ($fil_compor != '') {
-    $condiciones[] = "m.Comportaminto LIKE '%$fil_compor%'";
+    $condiciones[] = "m.Comportamiento LIKE '%$fil_compor%'";
 }
 if ($fil_fechaN != '') {
     $condiciones[] = "m.Fecha LIKE '%$fil_fechaN%'";
@@ -85,7 +85,7 @@ $hay_filtros = $fil_chip != '' || $fil_compor != '' || $fil_fechaN != '' || $fil
     <?php endif; ?>
 
     <br>
-    <a href="./form_mascota.html">+ Añadir mascota</a>
+    <a href="./form_mascota.php">+ Añadir mascota</a>
     <br><br>
 
     <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'eliminado'): ?>
@@ -125,7 +125,7 @@ $hay_filtros = $fil_chip != '' || $fil_compor != '' || $fil_fechaN != '' || $fil
             <td><?= htmlspecialchars($fila['Propietario']) ?></td>
             <td><?= htmlspecialchars($fila['peso']) ?></td>
             <td><?= htmlspecialchars($fila['Tamaño']) ?></td>
-            <td><?= htmlspecialchars($fila['Comportaminto']) ?></td>
+            <td><?= htmlspecialchars($fila['Comportamiento']) ?></td>
             <td><?= htmlspecialchars($fila['Fecha']) ?></td>
             <td><?= htmlspecialchars($fila['Veterinario']) ?></td>
             <td>

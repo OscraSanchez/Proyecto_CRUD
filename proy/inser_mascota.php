@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-        $sql = "INSERT INTO Mascotas (Chip, Nombre, Sexo, tipo, id_Raza, peso, Tamaño, Comportaminto, Fecha, id_veterinario, id_Propietario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO Mascotas (Chip, Nombre, Sexo, tipo, id_Raza, peso, Tamaño, Comportamiento, Fecha, id_veterinario, id_Propietario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($conn, $sql);
 
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
     } else {
-        echo "Faltan datos en el formulario.";
+        echo "<script>alert('Faltan datos'); window.location.href='./form_mascota.php';</script>";
     }
 
 } else {
